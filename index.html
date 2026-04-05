@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miodrag Tasic | Product Builder</title>
+    <meta
+      name="description"
+      content="Founder-facing portfolio for Miodrag Tasic, product builder across AI products, internal systems, desktop software, client work, and teaching."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top">Miodrag Tasic</a>
+        <nav class="header-nav" aria-label="Section navigation">
+          <a href="#flagships">Selected projects</a>
+          <a href="#project-map">More work</a>
+          <a href="#working-style">How I work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Product builder</p>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>
+              I build products that need taste, systems thinking, and real shipping
+              discipline.
+            </h1>
+            <p class="hero-text">
+              I work across consumer AI, internal systems, desktop software, and
+              client delivery. If you are evaluating me for product-minded
+              engineering work, the projects below are the fastest way to scan the
+              range.
+            </p>
+            <div class="hero-links" aria-label="Direct links">
+              <a href="https://www.linkedin.com/in/miodragtasic" target="_blank" rel="noreferrer"
+                >LinkedIn</a
+              >
+              <a href="https://github.com/MiodragMTasic" target="_blank" rel="noreferrer"
+                >GitHub</a
+              >
+              <a href="mailto:miodragarchitect@gmail.com">Email</a>
+              <a href="https://www.miodragdev.com/" target="_blank" rel="noreferrer"
+                >miodragdev.com</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="flagships">
+        <div class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2>Selected projects</h2>
+          <p>
+            Start here if you only have a few minutes.
+          </p>
+        </div>
+
+        <article class="work-row">
+          <div class="work-copy">
+            <div class="work-kicker">
+              <span class="work-number">01</span>
+              <span>AI product / consumer travel</span>
+            </div>
+            <h3>Wanderlust</h3>
+            <p>
+              An AI travel product built around real planning behavior: compare
+              stays, shape itineraries, revise choices, and coordinate trips without
+              collapsing into chatbot theater.
+            </p>
+            <ul class="proof-list">
+              <li>Product ownership across the full travel flow, not just the AI layer.</li>
+              <li>Comparison UX, itinerary editing, and mobile travel surfaces.</li>
+              <li>Live product with real iteration pressure.</li>
+            </ul>
+            <div class="tag-row">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Firebase</span>
+              <span>Gemini</span>
+              <span>Maps</span>
+            </div>
+            <div class="link-row">
+              <a href="https://travel.miodragdev.com" target="_blank" rel="noreferrer"
+                >Open live product</a
+              >
+            </div>
+          </div>
+          <figure class="work-media">
+            <img
+              src="./assets/wanderlust-home.png"
+              alt="Wanderlust homepage showing a cinematic travel planning interface"
+            />
+          </figure>
+        </article>
+
+        <article class="work-row">
+          <div class="work-copy">
+            <div class="work-kicker">
+              <span class="work-number">02</span>
+              <span>Client ops / service infrastructure</span>
+            </div>
+            <h3>MiodragDev Portal</h3>
+            <p>
+              A multi-client retainer, request, and invoicing platform built to
+              make service work legible and reliable for both admin and client
+              sides, contracts, funding state, invoice PDFs, and dashboard
+              visibility included.
+            </p>
+            <ul class="proof-list">
+              <li>Separate admin and client surfaces with different jobs.</li>
+              <li>Requests, contracts, invoices, and retainer health in one system.</li>
+              <li>Hosted product plus desktop distribution.</li>
+            </ul>
+            <div class="tag-row">
+              <span>Next.js</span>
+              <span>Supabase</span>
+              <span>Postgres</span>
+              <span>React PDF</span>
+            </div>
+            <div class="link-row">
+              <a href="https://miodragdev-portal.vercel.app" target="_blank" rel="noreferrer"
+                >Open portal</a
+              >
+              <a
+                href="https://github.com/MiodragMTasic/miodragdev-portal-downloads"
+                target="_blank"
+                rel="noreferrer"
+                >Desktop downloads</a
+              >
+            </div>
+          </div>
+          <figure class="work-media">
+            <img
+              src="./assets/portal-dashboard-preview.png"
+              alt="MiodragDev Portal dashboard showing clients, retainers, and request metrics"
+            />
+          </figure>
+        </article>
+
+        <article class="work-row">
+          <div class="work-copy">
+            <div class="work-kicker">
+              <span class="work-number">03</span>
+              <span>Commerce stack / internal CRM</span>
+            </div>
+            <h3>GetClouds + GCCRM</h3>
+            <p>
+              A real operating stack: public storefront work on one side, internal
+              CRM workflows on the other. Shopify is the source of truth, and the
+              day-to-day system adds the missing pieces, notes, follow-ups,
+              assignment, recovery views, and operational context.
+            </p>
+            <ul class="proof-list">
+              <li>Public commerce surface plus private CRM workflow layer.</li>
+              <li>Clean boundary between Shopify truth and writable ops state.</li>
+              <li>Proof across both customer UX and internal operations.</li>
+            </ul>
+            <div class="tag-row">
+              <span>Shopify</span>
+              <span>Theme work</span>
+              <span>Supabase</span>
+              <span>Admin API</span>
+              <span>Operational UX</span>
+            </div>
+            <div class="link-row">
+              <a href="https://getclouds.ca" target="_blank" rel="noreferrer"
+                >Open GetClouds</a
+              >
+              <span class="quiet-link">Internal CRM stays private.</span>
+            </div>
+          </div>
+          <figure class="work-media">
+            <img
+              src="./assets/northvault-inventory.png"
+              alt="NorthVault CRM showing the inventory operational screen"
+            />
+            <figcaption>Internal CRM inventory view.</figcaption>
+          </figure>
+        </article>
+
+        <article class="work-row">
+          <div class="work-copy">
+            <div class="work-kicker">
+              <span class="work-number">04</span>
+              <span>Desktop utility / local-first product</span>
+            </div>
+            <h3>SwiftNotes</h3>
+            <p>
+              A docked local-first macOS workspace that treats the edge of the
+              screen as productive real estate. Notes, tasks, clipboard capture,
+              links, plugins, and side utilities all live in one thin surface
+              instead of bloating into another generic full-window app.
+            </p>
+            <ul class="proof-list">
+              <li>Native shell thinking, not just browser habits.</li>
+              <li>Swift and Cocoa shell with web UI inside WKWebView.</li>
+              <li>Public repo and downloadable DMG.</li>
+            </ul>
+            <div class="tag-row">
+              <span>Swift</span>
+              <span>Cocoa</span>
+              <span>WKWebView</span>
+              <span>Local-first</span>
+            </div>
+            <div class="link-row">
+              <a href="https://github.com/MiodragMTasic/SwiftNotes" target="_blank" rel="noreferrer"
+                >GitHub</a
+              >
+              <a
+                href="https://github.com/MiodragMTasic/SwiftNotes/releases/latest/download/SwiftNotes.dmg"
+                target="_blank"
+                rel="noreferrer"
+                >Download DMG</a
+              >
+            </div>
+          </div>
+          <figure class="work-media">
+            <img
+              src="./assets/swiftnotes-board.png"
+              alt="SwiftNotes board showing the workspace shell and plugin system"
+            />
+          </figure>
+        </article>
+      </section>
+
+      <section class="section" id="project-map">
+        <div class="section-head">
+          <p class="eyebrow">Project index</p>
+          <h2>More work</h2>
+          <p>Client work, experiments, and smaller systems.</p>
+        </div>
+
+        <div class="filter-bar" role="toolbar" aria-label="Project filters">
+          <button class="filter-chip active" data-filter="all" type="button">All</button>
+          <button class="filter-chip" data-filter="systems" type="button">Systems</button>
+          <button class="filter-chip" data-filter="sites" type="button">Sites</button>
+          <button class="filter-chip" data-filter="experiments" type="button">Experiments</button>
+        </div>
+
+        <div id="project-list" class="project-list" aria-live="polite"></div>
+      </section>
+
+      <section class="section" id="working-style">
+        <div class="section-head">
+          <p class="eyebrow">Working style</p>
+          <h2>How I work</h2>
+          <p>
+            I am most useful when the product is still messy: the interface needs
+            taste, the system needs structure, and the work has to move from idea
+            to something real without a lot of ceremony in between.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-contact" id="contact">
+        <div class="section-head">
+          <p class="eyebrow">Contact</p>
+          <h2>If one of these lanes overlaps with what you are building, reach out.</h2>
+        </div>
+        <div class="contact-grid">
+          <p>
+            Open the project that matches what you are building, then get in touch.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:miodragarchitect@gmail.com">miodragarchitect@gmail.com</a>
+            <a href="https://www.linkedin.com/in/miodragtasic" target="_blank" rel="noreferrer"
+              >LinkedIn</a
+            >
+            <a href="https://github.com/MiodragMTasic" target="_blank" rel="noreferrer"
+              >GitHub</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
