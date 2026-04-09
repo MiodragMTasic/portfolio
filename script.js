@@ -64,6 +64,17 @@ const projects = [
     ],
   },
   {
+    name: "GetClouds Order Agent",
+    lane: "AI agent / Managed Agents",
+    filters: ["ai", "experiments"],
+    summary:
+      "Customer-facing AI agent for a wholesale distribution store, built on Claude Managed Agents. Buyers search products, check real-time inventory, view order history, and reorder through a chat interface embedded in the Shopify storefront.",
+    proof:
+      "Built with the Managed Agents API (session management, custom tool execution, Shopify GraphQL integration). Interactive mockup shows the component design and conversation flow.",
+    state: "Experiment",
+    links: [{ label: "View demo", href: "./getclouds-agent-demo.html" }],
+  },
+  {
     name: "LoLPerformance",
     lane: "Analytics lab",
     filters: ["experiments"],

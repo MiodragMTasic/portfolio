@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GetClouds Order Agent — Component Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f1e8;
+      --panel: #fbf9f4;
+      --ink: #161412;
+      --muted: #625b53;
+      --line: rgba(22, 20, 18, 0.14);
+      --accent: #7f5336;
+      --blue: #1566e0;
+      --font-body: "Public Sans", sans-serif;
+      --font-mono: "DM Mono", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; }
+
+    .page { width: min(960px, calc(100vw - 32px)); margin: 0 auto; padding: 48px 0 80px; }
+    .back { font-size: 14px; color: var(--muted); text-decoration: none; }
+    .back:hover { color: var(--ink); }
+
+    h1 { font-size: 28px; font-weight: 600; margin: 24px 0 8px; }
+    .subtitle { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+
+    .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
+
+    .demo-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .demo-label {
+      padding: 12px 20px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Chat widget mockup */
+    .widget-frame {
+      width: 380px;
+      max-width: 100%;
+      margin: 24px auto;
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+      overflow: hidden;
+      background: #fff;
+      font-family: Inter, sans-serif;
+    }
+    .widget-header {
+      background: var(--blue);
+      color: #fff;
+      padding: 16px 20px;
+    }
+    .widget-header h3 { font-size: 15px; font-weight: 600; margin: 0; }
+    .widget-header span { font-size: 12px; opacity: 0.75; }
+    .widget-messages { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .msg {
+      max-width: 82%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+    .msg-agent { align-self: flex-start; background: #f0f2f5; color: #1a1a1a; border-bottom-left-radius: 4px; }
+    .msg-user { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+    .msg-tool {
+      align-self: flex-start;
+      background: #e8f4e8;
+      color: #2d5a2d;
+      border-bottom-left-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      border-left: 3px solid #4a9a4a;
+    }
+    .starters { padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .starter-chip {
+      background: #f0f2f5;
+      border: 1px solid #e0e3e8;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #1a1a1a;
+      font-family: Inter, sans-serif;
+    }
+    .widget-input {
+      border-top: 1px solid #e0e3e8;
+      padding: 12px 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .widget-input input {
+      flex: 1;
+      border: 1px solid #d0d3d8;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: Inter, sans-serif;
+      outline: none;
+    }
+    .widget-input button {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: Inter, sans-serif;
+    }
+
+    /* Bubble mockup */
+    .bubble-demo { padding: 40px; text-align: center; position: relative; min-height: 120px; }
+    .bubble {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(21, 102, 224, 0.3);
+    }
+    .bubble svg { width: 24px; height: 24px; }
+    .bubble-label { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    /* Architecture diagram */
+    .arch { padding: 24px; font-family: var(--font-mono); font-size: 13px; line-height: 2; color: var(--muted); }
+    .arch strong { color: var(--ink); }
+
+    /* Tech tags */
+    .tags { padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+
+    /* Tool call detail */
+    .tool-section { padding: 20px; }
+    .tool-section h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+    .tool-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 8px;
+    }
+    .tool-name { font-family: var(--font-mono); font-size: 13px; font-weight: 500; color: var(--blue); }
+    .tool-desc { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a class="back" href="./index.html">Back to portfolio</a>
+
+    <h1>GetClouds Order Agent</h1>
+    <p class="subtitle">
+      Customer-facing AI agent for wholesale buyers, built on Claude Managed Agents.
+      Experimental integration with a live Shopify store's product and order data.
+    </p>
+
+    <div class="demo-grid">
+
+      <!-- Left: Chat widget mockup -->
+      <div>
+        <div class="demo-panel">
+          <div class="demo-label">Chat widget — product inquiry flow</div>
+          <div class="widget-frame">
+            <div class="widget-header">
+              <h3>GetClouds Order Assistant</h3>
+              <span>Powered by Claude</span>
+            </div>
+            <div class="widget-messages">
+              <div class="msg msg-agent">Hi! I can help you check stock, look up your orders, find new products, or reorder. What do you need?</div>
+              <div class="msg msg-user">What STLTH products do you have?</div>
+              <div class="msg msg-tool">search_products({ query: "STLTH" })</div>
+              <div class="msg msg-agent">Here are the STLTH products currently available:
+
+- STLTH 5K Pod Pack (3pc) — $18.99, 24 in stock
+- STLTH Loop 2 9K — $12.99, 156 in stock
+- STLTH Titan 10K — $14.99, 89 in stock
+- STLTH 8K Pro — $13.49, 12 in stock (low)
+
+Want me to check anything else or help you reorder?</div>
+            </div>
+            <div class="widget-input">
+              <input type="text" placeholder="Ask about products, orders, stock..." disabled />
+              <button disabled>Send</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" style="margin-top: 24px;">
+          <div class="demo-label">Chat widget — order history flow</div>
+          <div class="widget-frame">
+            <div class="widget-header">
+              <h3>GetClouds Order Assistant</h3>
+              <span>Powered by Claude</span>
+            </div>
+            <div class="widget-messages">
+              <div class="msg msg-user">Show me my recent orders</div>
+              <div class="msg msg-tool">get_customer_orders({ limit: 3 })</div>
+              <div class="msg msg-agent">Your last 3 orders:
+
+Order #GC-1847 (2026-03-22) — $892.50 CAD
+  12x STLTH Loop 2 9K
+  8x Boosted ULTRA Pods 6mL
+  6x Nasha 40K
+
+Order #GC-1831 (2026-03-08) — $654.00 CAD
+  10x STLTH Loop 2 9K
+  4x Boosted 7DAY90K
+
+Order #GC-1802 (2026-02-19) — $1,240.00 CAD
+  20x STLTH 5K Pod Pack
+  15x Nasha 40K
+
+Want to reorder any of these?</div>
+              <div class="msg msg-user">Yeah, reorder my usual</div>
+              <div class="msg msg-tool">check_inventory({ product_name: "STLTH Loop" })
+check_inventory({ product_name: "Boosted ULTRA" })</div>
+              <div class="msg msg-agent">Based on your last 3 orders, your usual is:
+
+- 12x STLTH Loop 2 9K — in stock (156 units)
+- 8x Boosted ULTRA Pods 6mL — in stock (8 units, running low)
+- 6-15x Nasha 40K — in stock (42 units)
+
+Heads up: Boosted ULTRA is at 8 units. I'd recommend ordering soon before they sell out. Want me to add these to your cart?</div>
+            </div>
+            <div class="widget-input">
+              <input type="text" placeholder="Ask about products, orders, stock..." disabled />
+              <button disabled>Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Architecture + details -->
+      <div>
+        <div class="demo-panel">
+          <div class="demo-label">Entry point — floating bubble</div>
+          <div class="bubble-demo">
+            <div class="bubble">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="bubble-label">Appears bottom-right on getclouds.ca. Respects the store's existing cart drawer z-index.</div>
+          </div>
+        </div>
+
+        <div class="demo-panel" style="margin-top: 24px;">
+          <div class="demo-label">Architecture</div>
+          <div class="arch">
+            <strong>getclouds.ca</strong> (Shopify theme)<br/>
+            &nbsp;&nbsp;chat widget JS snippet<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;|<br/>
+            <strong>Vercel serverless function</strong><br/>
+            &nbsp;&nbsp;protects API key, executes tool calls<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;|<br/>
+            <strong>Claude Managed Agents</strong> (Anthropic cloud)<br/>
+            &nbsp;&nbsp;autonomous session, tool orchestration<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;|<br/>
+            <strong>Shopify Admin GraphQL</strong><br/>
+            &nbsp;&nbsp;products, inventory, orders, customers
+          </div>
+        </div>
+
+        <div class="demo-panel" style="margin-top: 24px;">
+          <div class="demo-label">Custom tools</div>
+          <div class="tool-section">
+            <h4>Agent toolset</h4>
+            <div class="tool-card">
+              <div class="tool-name">search_products</div>
+              <div class="tool-desc">Search catalogue by keyword. Returns name, brand, price, stock.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-name">check_inventory</div>
+              <div class="tool-desc">Real-time inventory levels. Flags low-stock items.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-name">get_customer_orders</div>
+              <div class="tool-desc">Order history scoped to the authenticated buyer.</div>
+            </div>
+            <div class="tool-card">
+              <div class="tool-name">get_new_products</div>
+              <div class="tool-desc">Recently added products the buyer hasn't seen.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-panel" style="margin-top: 24px;">
+          <div class="demo-label">Stack</div>
+          <div class="tags">
+            <span class="tag">Claude Managed Agents</span>
+            <span class="tag">Haiku 4.5</span>
+            <span class="tag">Shopify GraphQL</span>
+            <span class="tag">Vercel Serverless</span>
+            <span class="tag">OAuth Client Credentials</span>
+            <span class="tag">SSE Streaming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
